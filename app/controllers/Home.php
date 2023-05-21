@@ -1,7 +1,8 @@
 <?php
 
-    class Home extends Controller {
-        public function index($a='', $b='', $c=''){
+    class Home {
+        use Controller;
+        public function index(){
 //            echo "this is the home controller";
             $user = new User;
 //            $data = [
@@ -19,7 +20,8 @@
 //                'age' => 54
 //            ];
 //            Show($model->update(2, $array));
-            Show($user->findAll());
+//            Show($user->findAll());
             $this->view('home');
         }
+
     }
