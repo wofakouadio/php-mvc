@@ -53,6 +53,14 @@ trait Model {
         return false;
     }
     public function insert($data){
+        //remove unwanted data
+        if(!empty($this->allowedColumns)){
+            foreach ($data as $key => $value){
+                if(!in_array($key, $this->allowedColumns)){
+                    unset($data[$key]);
+                }
+            }
+        }
         $keys = array_keys($data);
         $query = "INSERT INTO " . $this->table . "(".implode(",", $keys).") VALUES(:".implode(", :", $keys).")";
         $this->query($query, $data);
@@ -60,6 +68,13 @@ trait Model {
     }
 
     public function update($id, $data, $id_column = 'id'){
+        if(!empty($this->allowedColumns)){
+            foreach ($data as $key => $value){
+                if(!in_array($key, $this->allowedColumns)){
+                    unset($data[$key]);
+                }
+            }
+        }
         $keys = array_keys($data);
         $query = "UPDATE $this->table SET ";
         foreach ($keys as $key){
