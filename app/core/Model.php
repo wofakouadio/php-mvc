@@ -10,6 +10,13 @@ trait Model {
 //    protected $table = 'users_table';
     protected $limit = 10;
     protected $offset = 0;
+    protected $order_type = "desc";
+    protected $order_column = "id";
+
+    public function findAll(){
+        $query = "SELECT * FROM " . $this->table . " ORDER BY " . $this->order_column . " " . $this->order_type . " LIMIT " . $this->limit . " offset " . $this->offset;
+        return $this->query($query);
+    }
 
     public function where($data, $data_not = []){
         $keys = array_keys($data);
