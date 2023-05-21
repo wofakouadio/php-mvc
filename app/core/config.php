@@ -21,3 +21,10 @@ const PASSWORD = "";
 const DATABASE = "php-mvc-db";
 const CHARSET = "utf8";
 const DSN = "mysql:hostname=".LOCALHOST.";dbname=".DATABASE.";charset=".CHARSET;
+
+//Site configuration
+const APP_NAME = "My PHP MVC Trial";
+const APP_DESCRIPTION = "this is the best PHP Framework MVC created from scratched";
+
+//Debug mode
+const DEBUG = true;
